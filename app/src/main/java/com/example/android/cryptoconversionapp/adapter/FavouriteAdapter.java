@@ -93,6 +93,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
             flagIV = (ImageView) itemView.findViewById(R.id.imageview_flag_fav_list);
             cardView = (CardView) itemView.findViewById(R.id.cardview_fav_list);
 
+            //Clicking in an item to take you to ConversionActivity
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -122,8 +123,6 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
                 }
             });
 
-            //TODO WORK ON THE ONCLICK TO CONVERSION SCREEN
-            //TODO WORK ON THE SWIPE TO DELETE
 
 
 

@@ -87,9 +87,9 @@
 
                 <TextView
                     android:id="@+id/textview_currency_symbol_conversion"
-                    android:layout_width="100dp"
+                    android:layout_width="75dp"
                     android:layout_height="match_parent"
-                    android:text="N"
+                    android:text="NGN"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -98,6 +98,8 @@
                     android:id="@+id/textview_currency_value_conversion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:maxLength="14"
+                    android:maxLines="1"
                     android:text="0.00"
                     android:textAlignment="viewEnd"
                     android:textAppearance="?android:textAppearanceLarge"
@@ -118,9 +120,9 @@
 
                 <TextView
                     android:id="@+id/textview_first_symbol_conversion"
-                    android:layout_width="100dp"
+                    android:layout_width="75dp"
                     android:layout_height="match_parent"
-                    android:text="1ST COIN"
+                    android:text="BTC"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -133,6 +135,7 @@
                     android:textAlignment="viewEnd"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textSize="30sp"
+                    android:maxLines="1"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -148,9 +151,9 @@
 
                 <TextView
                     android:id="@+id/textview_second_symbol_conversion"
-                    android:layout_width="100dp"
+                    android:layout_width="75dp"
                     android:layout_height="match_parent"
-                    android:text="2ND COIN"
+                    android:text="ETH"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -163,6 +166,7 @@
                     android:textAlignment="viewEnd"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textSize="30sp"
+                    android:maxLines="1"
                     android:textStyle="bold" />
 
             </LinearLayout>

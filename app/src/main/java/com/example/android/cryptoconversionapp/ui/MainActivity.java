@@ -1,7 +1,6 @@
 package com.example.android.cryptoconversionapp.ui;
 
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +19,10 @@ import android.widget.Toast;
 
 import com.example.android.cryptoconversionapp.R;
 import com.example.android.cryptoconversionapp.adapter.CustomAdapter;
-import com.example.android.cryptoconversionapp.adapter.FavouriteAdapter;
 import com.example.android.cryptoconversionapp.api.ApiClient;
 import com.example.android.cryptoconversionapp.api.ApiService;
 import com.example.android.cryptoconversionapp.model.Currency;
 import com.example.android.cryptoconversionapp.model.CurrencyResponse;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.media.CamcorderProfile.get;
-import static android.os.Build.VERSION_CODES.M;
 import static android.view.View.VISIBLE;
-import static com.example.android.cryptoconversionapp.R.string.disconnected;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+//at the initial loading of the app
     public void initViews(){
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Fetching data...");
@@ -94,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+//calls froim retrofit
     public void loadJSON(){
         disconnected = (TextView) findViewById(R.id.textview_disconnected_main);
         try {
@@ -131,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+//adds these values to the spinners
     public void addItemToSpinner(){
         List<String> coinList = new ArrayList<String>();
         coinList.add("ETH");
@@ -170,11 +164,6 @@ public class MainActivity extends AppCompatActivity {
         currencySpinner.setAdapter(currencyAdapter);
 
     }
-//
-//    public void setAdapterForFavourite(){
-//        favouriteRecView = (RecyclerView) findViewById(R.id.recview_favourite);
-//        favouriteAdapter = new FavouriteAdapter();
-//    }
 
 
     private ArrayList<Currency> toShowList = new ArrayList<>();
@@ -182,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> toShowNameList = new ArrayList<String>();
     private ArrayList<String> toHideNameList = new ArrayList<String>();
 
+
+    //Adds items to the Arrays used to populate the favourite
     public void onSubmit(){
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,54 +181,57 @@ public class MainActivity extends AppCompatActivity {
 
                 if(coinSpinner.getSelectedItem() == "ETH"){
                     position = 0;
-                    while(position < ethCurrencyForSpinner.size()){
-                        if(currencySpinner.getSelectedItem() == ethCurrencyForSpinner.get(position).getCountryName()){
-                            Currency ethCurrencyToShow = ethCurrencyForSpinner.get(position);
-                            Currency btcCurrencyToHide = btcCurrencyForSpinner.get(position);
+                    try {
+                        while (position < ethCurrencyForSpinner.size()) {
+                            if (currencySpinner.getSelectedItem() == ethCurrencyForSpinner.get(position).getCountryName()) {
+                                Currency ethCurrencyToShow = ethCurrencyForSpinner.get(position);
+                                Currency btcCurrencyToHide = btcCurrencyForSpinner.get(position);
 
-                            toShowList.add(ethCurrencyToShow);
-                            toHideList.add(btcCurrencyToHide);
-                            toShowNameList.add("ETH");
-                            toHideNameList.add("BTC");
-//                            FavouriteActivity favouriteActivity = new FavouriteActivity();
-//                            favouriteActivity.addToFavourite(coinSpinner.getSelectedItem().toString(),
-//                                    ethCurrencyToShow, "BTC", btcCurrencyToHide);
-                            Toast.makeText(MainActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+                                toShowList.add(ethCurrencyToShow);
+                                toHideList.add(btcCurrencyToHide);
+                                toShowNameList.add("ETH");
+                                toHideNameList.add("BTC");
+
+                                Toast.makeText(MainActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+
+                            }
+                            position++;
                         }
-                        position ++;
+                    }
+                    catch (Exception e){
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 if (coinSpinner.getSelectedItem() == "BTC") {
                     position = 0;
-                    while(position < btcCurrencyForSpinner.size()){
-                        if(currencySpinner.getSelectedItem() == btcCurrencyForSpinner.get(position).getCountryName()){
-                            Currency btcCurrencyToShow = btcCurrencyForSpinner.get(position);
-                            Currency ethCurrencyToHide = ethCurrencyForSpinner.get(position);
+                    try {
+                        while (position < btcCurrencyForSpinner.size()) {
+                            if (currencySpinner.getSelectedItem() == btcCurrencyForSpinner.get(position).getCountryName()) {
+                                Currency btcCurrencyToShow = btcCurrencyForSpinner.get(position);
+                                Currency ethCurrencyToHide = ethCurrencyForSpinner.get(position);
 
-//
-                            toShowList.add(btcCurrencyToShow);
-                            toHideList.add(ethCurrencyToHide);
-                            toShowNameList.add("BTC");
-                            toHideNameList.add("ETH");
-//                            FavouriteActivity favouriteActivity = new FavouriteActivity();
-//                            favouriteActivity.addToFavourite(coinSpinner.getSelectedItem().toString(),
-//                                    btcCurrencyToShow, "ETH", ethCurrencyToHide);
-                            Toast.makeText(MainActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+
+                                toShowList.add(btcCurrencyToShow);
+                                toHideList.add(ethCurrencyToHide);
+                                toShowNameList.add("BTC");
+                                toHideNameList.add("ETH");
+
+                                Toast.makeText(MainActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
+                            }
+                            position++;
                         }
-                        position++;
+                    }
+                    catch (Exception e){
+                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
-               // Toast.makeText(MainActivity.this, "Coin: "+ String.valueOf(coinSpinner.getSelectedItem())
-                 //       +"Currency: "+ String.valueOf(currencySpinner.getSelectedItem()), Toast.LENGTH_SHORT).show();
-
-
 
             }
         });
     }
 
-//TODO CHANGE THIS TO A MENU
+
     public void goToFavourite(){
         Intent intent = new Intent(this, FavouriteActivity.class);
         Bundle bundle = new Bundle();
@@ -266,6 +260,5 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(menuItem);
         }
     }
-
 
 }
