@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CryptoConversionApp</string>
+    <string name="disconnected">Internet Disconnected. Ensure that internet connectivity is active</string>
+    <string name="country">Nigeria</string>
+    <string name="btc">1BTC = N1000.00</string>
+    <string name="eth">1ETH = N800.73</string>
+    <string name="currency">Naira</string>
+    <string name="symbol">N</string>
+    <string name="no_favourites">No Favourites Added</string>
+    <string name="favourite">Favourite</string>
+    <string name="home">Home</string>
+</resources>

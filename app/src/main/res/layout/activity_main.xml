@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.cryptoconversionapp.ui.MainActivity"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:id="@+id/spinner_coin_main"
+            android:layout_weight="1"
+            />
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:id="@+id/spinner_currency_main"
+            android:layout_height="match_parent"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/button_submit_main"
+            android:layout_weight="1"
+            android:text="SUBMIT"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Go to Favourite"-->
+        <!--android:onClick="goToFavourite"-->
+        <!--android:backgroundTint="@color/colorPrimary"-->
+        <!--android:textColor="#ffffff"/>-->
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeLayout_main">
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recview_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#f2f2f2"
+         />
+
+    <TextView
+        android:id="@+id/textview_disconnected_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/disconnected"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>
